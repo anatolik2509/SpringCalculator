@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="plusOp" class="ru.itis.antonov.PlusOperation"/>
+
+    <bean id="minusOp" class="ru.itis.antonov.MinusOperation"/>
+
+    <bean id="multiOp" class="ru.itis.antonov.MultiplyOperation"/>
+
+    <bean id="divOp" class="ru.itis.antonov.DivideOperation"/>
+
+    <util:map id="operationsMap" key-type="java.lang.Character" value-type="ru.itis.antonov.Operation" map-class="java.util.HashMap">
+        <entry key="+" value-ref="plusOp"/>
+        <entry key="-" value-ref="minusOp"/>
+        <entry key="*" value-ref="multiOp"/>
+        <entry key="/" value-ref="divOp"/>
+    </util:map>
+
+    <bean id="calculator" class="ru.itis.antonov.SimpleCalculator">
+        <constructor-arg ref="operationsMap"/>
+    </bean>
+
+    <bean id="input" class="ru.itis.antonov.ConsoleSentenceInput"/>
+    <bean id="output" class="ru.itis.antonov.ConsoleResultOutput"/>
+
+</beans>
