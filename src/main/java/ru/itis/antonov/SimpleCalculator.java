@@ -28,7 +28,7 @@ public class SimpleCalculator implements Calculator{
                 }
             }
             if(operations.containsKey(subSentence.charAt(i)) && parentheses == 0){
-                BinaryOperation operation = operations.get(subSentence.charAt(i));
+                BinaryOperation operation = (BinaryOperation) operations.get(subSentence.charAt(i)).getClone();
                 operation.setOperation1(buildOperation(subSentence.substring(0, i)));
                 operation.setOperation2(buildOperation(subSentence.substring(i + 1)));
                 return operation;

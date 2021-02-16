@@ -12,4 +12,9 @@ public class DivideOperation extends BinaryOperation{
     public double getResult() {
         return operation1.getResult() / operation2.getResult();
     }
+
+    @Override
+    public Operation getClone() {
+        return new DivideOperation();
+    }
 }

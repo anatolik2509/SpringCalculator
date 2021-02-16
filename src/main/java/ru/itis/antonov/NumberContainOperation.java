@@ -11,4 +11,20 @@ public class NumberContainOperation implements Operation{
     public double getResult() {
         return number;
     }
+
+    public NumberContainOperation() {
+    }
+
+    public double getNumber() {
+        return number;
+    }
+
+    public void setNumber(double number) {
+        this.number = number;
+    }
+
+    @Override
+    public Operation getClone() {
+        return new NumberContainOperation();
+    }
 }
